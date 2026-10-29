@@ -43,6 +43,18 @@
 
 ### Bằng chứng thực hiện
 
-- Link Pull Request: bổ sung sau khi tạo.
-- Link GitHub Actions: bổ sung sau khi chạy.
-- Kết quả chạy: chưa chạy, chờ mở PR.
+- Link Pull Request: https://github.com/ngocthuan-tech/aws-cloud-native-autoscaling-lab/pull/6
+- Link GitHub Actions: https://github.com/ngocthuan-tech/aws-cloud-native-autoscaling-lab/actions/runs/40897467644
+- Kết quả: Terraform CI thành công; kiểm tra định dạng, khởi tạo phục vụ validation và validate đều đạt.
+
+### Lỗi CI và cách khắc phục
+
+- Hiện tượng: validate thất bại vì checksum provider AWS không khớp lockfile trên runner Linux.
+- Nguyên nhân: lockfile thiếu checksum dành cho linux_amd64.
+- Xử lý: dùng Terraform providers lock bổ sung checksum cho Windows và Linux.
+- Kết quả: giữ nguyên provider AWS 6.71.0 và chế độ lockfile readonly; CI chạy lại thành công.
+
+### Trạng thái bàn giao
+
+- PR #6 đã mở, CI đạt, đang chờ A review.
+- Việc tiếp theo: nhận cấu hình build từ B và chuẩn bị đề xuất OIDC với A.
