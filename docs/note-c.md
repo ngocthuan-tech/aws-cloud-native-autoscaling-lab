@@ -31,3 +31,18 @@
 - Nhận từ B đường dẫn Dockerfile, build context và lệnh build từng service.
 - Thiết lập kiểm tra Terraform trong GitHub Actions.
 - Chuẩn bị đề xuất Terraform cho GitHub Actions OIDC.
+### Bổ sung workflow Terraform CI
+
+- Tạo workflow .github/workflows/terraform-ci.yml.
+- Workflow chạy khi có PR vào main và khi có push vào main.
+- Dùng Terraform 1.17.1 trên GitHub-hosted runner Ubuntu.
+- Kiểm tra định dạng bằng terraform fmt -check.
+- Khởi tạo phục vụ validation bằng terraform init -backend=false.
+- Kiểm tra cấu hình bằng terraform validate.
+- Chỉ cấp quyền đọc nội dung repository cho workflow.
+
+### Bằng chứng thực hiện
+
+- Link Pull Request: bổ sung sau khi tạo.
+- Link GitHub Actions: bổ sung sau khi chạy.
+- Kết quả chạy: chưa chạy, chờ mở PR.
