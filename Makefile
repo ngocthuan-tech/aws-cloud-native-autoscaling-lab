@@ -1,20 +1,22 @@
-.PHONY: tf-init tf-fmt tf-plan tf-apply tf-destroy
+.PHONY: local-up local-down tf-init tf-plan tf-apply tf-destroy
 
-TF_DIR = infra/terraform
+# P0: Chạy ứng dụng ở môi trường Local
+local-up:
+	docker compose -f app/docker-compose.yml up -d
 
+local-down:
+	docker compose -f app/docker-compose.yml down -v
+
+# P1: Quản lý hạ tầng AWS bằng Terraform
 tf-init:
-	cd $(TF_DIR) && terraform init
-
-tf-fmt:
-	cd $(TF_DIR) && terraform fmt -recursive && terraform validate
+	cd infra && terraform init
 
 tf-plan:
-	cd $(TF_DIR) && terraform plan
+	cd infra && terraform plan
 
-# Không dùng -auto-approve: luôn xem lại kế hoạch trước khi apply
 tf-apply:
-	cd $(TF_DIR) && terraform apply
+	cd infra && terraform apply -auto-approve
 
-# Chạy sau mỗi buổi làm việc để tránh tốn tiền Fargate và ALB
+# QUAN TRỌNG: Chạy lệnh này sau mỗi buổi làm việc để tránh tốn tiền NAT Gateway & EKS!
 tf-destroy:
-	cd $(TF_DIR) && terraform destroy
+	cd infra && terraform destroy -auto-approve
