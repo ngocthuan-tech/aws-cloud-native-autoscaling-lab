@@ -58,3 +58,14 @@
 
 - PR #6 đã mở, CI đạt, đang chờ A review.
 - Việc tiếp theo: nhận cấu hình build từ B và chuẩn bị đề xuất OIDC với A.
+
+## Ngày 05/11/2026 — CI/CD đến lọc service và circuit breaker
+
+- Đã xác minh PR #6 được A merge; nhánh công việc mới `ci/ecs-delivery` xuất phát từ main mới nhất khi bắt đầu.
+- Chuẩn bị matrix build năm service, cache riêng, nguồn ứng dụng ghim SHA, OIDC publisher và reusable workflow deploy.
+- Lọc đường dẫn từng service; main so với lần delivery thành công gần nhất để bao phủ thay đổi sau run lỗi; từ chối publish/deploy lại main cũ.
+- Tag ECR theo commit, chạy lại tái dùng immutable tag, deploy bằng digest và kiểm tra đúng ECS revision.
+- Đề xuất Terraform OIDC/IAM opt-in cùng module ECS service có circuit breaker + rollback. A review/apply, C không tạo tài nguyên AWS.
+- Viết `docs/cicd-runbook.md` để A/B/D tiếp nhận bất đồng bộ và ADR ghi lý do quyết định.
+- Gặp lỗi `mvnw: cannot execute` trong Docker build local do Git Windows checkout CRLF. Đổi wrapper ở clone kiểm thử về LF; thêm quy tắc LF cho source local của nhóm. Không sửa Dockerfile upstream để che lỗi môi trường.
+- Bằng chứng kiểm tra và phần còn chờ AWS ghi tại `docs/evidence/2026-11-05-ci-delivery.md`.
