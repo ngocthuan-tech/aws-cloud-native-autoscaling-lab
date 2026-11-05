@@ -43,3 +43,9 @@ Actionlint tải từ release chính thức và đối chiếu SHA256 trước k
 - AWS target vẫn disabled; A cần review/apply IAM, bàn giao service và bật variables theo runbook.
 
 Build thành công chỉ chứng minh source/Dockerfile tạo được image. Java Dockerfile upstream bỏ qua application tests; B vẫn phụ trách kiểm thử chức năng và cấu hình backend.
+
+## Trạng thái xuất bản nhánh
+
+Mã đã commit local trên `ci/ecs-delivery`. Chưa push được từ phiên hỗ trợ: Git Credential Manager cần đăng nhập tương tác; kết nối GitHub đang dùng trả `403 Resource not accessible by integration` khi thử ghi. Không thay đổi nhánh main hoặc tạo PR.
+
+Chủ tài khoản chạy `git push -u origin ci/ecs-delivery` trong terminal của mình rồi tạo PR. Chưa có kết quả GitHub-hosted Actions cho commit này; cần chờ `Application delivery` và `Terraform CI` trên PR xanh trước khi A merge. Kết quả local ở trên không được trình bày là kết quả CI online.
