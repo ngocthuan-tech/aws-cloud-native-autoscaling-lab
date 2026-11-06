@@ -48,3 +48,8 @@ terraform.rc
 .env
 *.pem
 .aws/
+
+# Local CI checkouts, build receipts and deployment results
+/upstream/
+/receipts/
+/deployment-results/
