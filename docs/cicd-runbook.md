@@ -151,6 +151,8 @@ Artifacts cho D:
 - `deployment-<service>-<attempt>`: kết quả deploy, task revision trước/sau và thời gian chờ rollout thành công. Lỗi có thông báo rõ; không ghi task definition chứa environment vào artifact.
 - Thời gian build thật: lấy timestamps job Build từ GitHub Actions. Tổng commit→ECS và thời gian rollback cần đo riêng; chưa có số liệu AWS trong PR này.
 
-Giới hạn hiện tại: Dockerfile upstream có base tag và tải dependency/package khi build, nên ghim source không đảm bảo tái tạo bit-for-bit. Image đã publish được truy vết bằng digest. Upstream Dockerfile Java có `-DskipTests`; build thành công không thay kiểm thử chức năng của B. Trivy/Gitleaks/TFLint/plan comment là mốc tiếp theo, chưa có trong pipeline này.
+Giới hạn hiện tại: Dockerfile upstream có base tag và tải dependency/package khi build, nên ghim source không đảm bảo tái tạo bit-for-bit. Image đã publish được truy vết bằng digest. Upstream Dockerfile Java có `-DskipTests`; build thành công không thay kiểm thử chức năng của B. Trivy/Gitleaks/plan comment là mốc tiếp theo, chưa có trong pipeline này.
+
+Cập nhật 08/11: bổ sung TFLint cho Terraform root và module con; xem [cách chạy và bằng chứng kiểm tra](terraform-checks.md).
 
 Tài liệu tham chiếu: [GitHub OIDC với AWS](https://docs.github.com/en/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-aws), [ECS circuit breaker](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-circuit-breaker.html), [nguồn ứng dụng đã ghim](https://github.com/aws-containers/retail-store-sample-app/tree/d7a380b843e0759e58754f74188ea18252a51415).
