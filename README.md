@@ -56,3 +56,10 @@ graph TD
 
 Throughput (RPS), latency p50/p95/p99, error rate, scale-out reaction time,
 scale-in time, maximum task count, and cost per experiment.
+
+## 5. Application delivery
+
+See [CI/CD runbook](docs/cicd-runbook.md) for service source conventions, path filtering,
+OIDC/ECR activation, ECS deployment and the circuit breaker checklist.
+The [delivery decision record](docs/adr/0001-application-delivery.md) explains ownership and tradeoffs.
+AWS publishing and deployment are opt-in after A reviews and applies the infrastructure.

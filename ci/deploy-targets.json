@@ -1,0 +1,12 @@
+{
+  "region": "ap-southeast-1",
+  "ecrPrefix": "group14-capstone",
+  "cluster": "group14-capstone-cluster",
+  "services": {
+    "ui": { "enabled": false, "service": "", "container": "ui" },
+    "catalog": { "enabled": false, "service": "", "container": "catalog" },
+    "cart": { "enabled": false, "service": "", "container": "cart" },
+    "checkout": { "enabled": false, "service": "", "container": "checkout" },
+    "orders": { "enabled": false, "service": "", "container": "orders" }
+  }
+}

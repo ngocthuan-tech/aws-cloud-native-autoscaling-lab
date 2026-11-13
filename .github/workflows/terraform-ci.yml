@@ -7,6 +7,7 @@ on:
   push:
     branches:
       - main
+      - 'ci/**'
 
 permissions:
   contents: read
@@ -40,8 +41,27 @@ jobs:
       - name: Check Terraform formatting
         run: terraform fmt -check -recursive -diff
 
+      - name: Set up pinned TFLint and cache plugins
+        uses: terraform-linters/setup-tflint@6ffdbaa3be476b3431f7275c26966ef32ff60337 # v6.3.2
+        with:
+          tflint_version_file: .tflint-version
+          checksums: d4c545ed2e29d6338604b586f34f544f380f70f243aa72f7b484713835eaec61
+          cache: true
+          tflint_config_path: .tflint.hcl
+
+      - name: Install pinned TFLint rulesets
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: tflint --init --config "${GITHUB_WORKSPACE}/.tflint.hcl"
+
+      - name: Lint Terraform including child modules
+        run: tflint --recursive --config "${GITHUB_WORKSPACE}/.tflint.hcl" --format compact
+
       - name: Initialize Terraform for validation
         run: terraform init -backend=false -input=false -lockfile=readonly
 
       - name: Validate Terraform configuration
         run: terraform validate -no-color
+
+      - name: Test ECS circuit breaker without AWS access
+        run: terraform test -no-color
