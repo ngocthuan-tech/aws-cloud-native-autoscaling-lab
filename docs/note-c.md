@@ -69,3 +69,13 @@
 - Viết `docs/cicd-runbook.md` để A/B/D tiếp nhận bất đồng bộ và ADR ghi lý do quyết định.
 - Gặp lỗi `mvnw: cannot execute` trong Docker build local do Git Windows checkout CRLF. Đổi wrapper ở clone kiểm thử về LF; thêm quy tắc LF cho source local của nhóm. Không sửa Dockerfile upstream để che lỗi môi trường.
 - Bằng chứng kiểm tra và phần còn chờ AWS ghi tại `docs/evidence/2026-11-05-ci-delivery.md`.
+
+## Ngày 08/11/2026 — Bổ sung TFLint
+
+- Xác minh PR #9 đã được A merge ngày 06/11; các workflow Application delivery và Terraform CI của PR chạy thành công. Trạng thái chờ push/CI ghi ngày 05/11 là lịch sử, không còn là trạng thái hiện tại.
+- Tạo nhánh `ci/terraform-lint` từ main `6388a02ec96a5549194eaaeedd208dea8cb78ceb`.
+- Bổ sung TFLint 0.65.0, AWS ruleset 0.50.0, ghim action và checksum; cache plugin. Quét recursive dùng cùng config tuyệt đối cho mọi module.
+- TFLint phát hiện module ECS thiếu AWS provider version constraint. Bổ sung `~> 6.0`, giữ nguyên lockfile/provider 6.71.0.
+- Thử lỗi tĩnh có chủ đích trong module con ở thư mục tạm: phát hiện biến không dùng và instance type sai (exit 2); sửa rồi đạt (exit 0). Không tạo tài nguyên AWS.
+- Terraform fmt/validate và 4 mock tests đạt; actionlint đạt. Hướng dẫn và giới hạn nằm ở `docs/terraform-checks.md`.
+- Chưa làm Terraform plan/comment, chưa apply hoặc xác minh OIDC/ECS thật. Mọi thay đổi vẫn qua PR cho A duyệt.
