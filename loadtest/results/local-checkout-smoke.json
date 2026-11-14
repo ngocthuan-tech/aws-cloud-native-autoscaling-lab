@@ -1,0 +1,216 @@
+{
+    "metrics": {
+        "http_req_duration": {
+            "max": 60.6792,
+            "p(90)": 44.40098999999999,
+            "p(95)": 52.54009499999998,
+            "p(99)": 59.051379000000004,
+            "avg": 29.58413,
+            "min": 2.6261,
+            "med": 27.8672
+        },
+        "checks": {
+            "passes": 12,
+            "fails": 0,
+            "value": 1
+        },
+        "vus": {
+            "min": 1,
+            "max": 1,
+            "value": 1
+        },
+        "http_req_receiving": {
+            "max": 0.7565,
+            "p(90)": 0.07564999999999973,
+            "p(95)": 0.41607499999999914,
+            "p(99)": 0.6884150000000001,
+            "avg": 0.07565,
+            "min": 0,
+            "med": 0
+        },
+        "http_req_connecting": {
+            "med": 0,
+            "max": 1.0818,
+            "p(90)": 0.10817999999999962,
+            "p(95)": 0.5949899999999989,
+            "p(99)": 0.9844380000000003,
+            "avg": 0.10818000000000001,
+            "min": 0
+        },
+        "http_req_duration{expected_response:true}": {
+            "min": 2.6261,
+            "med": 27.8672,
+            "max": 60.6792,
+            "p(90)": 44.40098999999999,
+            "p(95)": 52.54009499999998,
+            "p(99)": 59.051379000000004,
+            "avg": 29.58413
+        },
+        "iteration_duration": {
+            "p(95)": 1317.1782,
+            "p(99)": 1317.1782,
+            "avg": 1317.1782,
+            "min": 1317.1782,
+            "med": 1317.1782,
+            "max": 1317.1782,
+            "p(90)": 1317.1782
+        },
+        "http_req_failed": {
+            "passes": 0,
+            "fails": 10,
+            "thresholds": {
+                "rate<0.01": false
+            },
+            "value": 0
+        },
+        "http_req_waiting": {
+            "avg": 29.508480000000002,
+            "min": 2.6261,
+            "med": 27.488950000000003,
+            "max": 60.6792,
+            "p(90)": 44.40098999999999,
+            "p(95)": 52.54009499999998,
+            "p(99)": 59.051379000000004
+        },
+        "vus_max": {
+            "value": 1,
+            "min": 1,
+            "max": 1
+        },
+        "http_reqs": {
+            "count": 10,
+            "rate": 7.591987173793188
+        },
+        "http_req_blocked": {
+            "p(95)": 10.25045999999998,
+            "p(99)": 16.959852,
+            "avg": 1.86372,
+            "min": 0,
+            "med": 0,
+            "max": 18.6372,
+            "p(90)": 1.8637199999999934
+        },
+        "http_req_tls_handshaking": {
+            "min": 0,
+            "med": 0,
+            "max": 0,
+            "p(90)": 0,
+            "p(95)": 0,
+            "p(99)": 0,
+            "avg": 0
+        },
+        "http_req_sending": {
+            "avg": 0,
+            "min": 0,
+            "med": 0,
+            "max": 0,
+            "p(90)": 0,
+            "p(95)": 0,
+            "p(99)": 0
+        },
+        "iterations": {
+            "count": 1,
+            "rate": 0.7591987173793189
+        },
+        "data_sent": {
+            "count": 1859,
+            "rate": 1411.3504156081538
+        },
+        "data_received": {
+            "count": 120463,
+            "rate": 91455.35509166488
+        }
+    },
+    "root_group": {
+        "name": "",
+        "path": "",
+        "id": "d41d8cd98f00b204e9800998ecf8427e",
+        "groups": {},
+        "checks": {
+                "trang chu tra HTTP 200": {
+                    "name": "trang chu tra HTTP 200",
+                    "path": "::trang chu tra HTTP 200",
+                    "id": "b5633a3e24eab0bad8b812478bca0c69",
+                    "passes": 1,
+                    "fails": 0
+                },
+                "danh muc tra HTTP 200": {
+                    "path": "::danh muc tra HTTP 200",
+                    "id": "b10ed7fd0cc736c17578198391bea059",
+                    "passes": 1,
+                    "fails": 0,
+                    "name": "danh muc tra HTTP 200"
+                },
+                "danh muc co san pham": {
+                    "name": "danh muc co san pham",
+                    "path": "::danh muc co san pham",
+                    "id": "a8c651a641ce3af58253f4921f0801ca",
+                    "passes": 1,
+                    "fails": 0
+                },
+                "tim thay link san pham": {
+                    "path": "::tim thay link san pham",
+                    "id": "2f4feffed77207844fc926a5ca99db18",
+                    "passes": 1,
+                    "fails": 0,
+                    "name": "tim thay link san pham"
+                },
+                "chi tiet san pham tra HTTP 200": {
+                    "passes": 1,
+                    "fails": 0,
+                    "name": "chi tiet san pham tra HTTP 200",
+                    "path": "::chi tiet san pham tra HTTP 200",
+                    "id": "d77146cb721bdab29a6268e91da34557"
+                },
+                "them san pham vao gio": {
+                    "name": "them san pham vao gio",
+                    "path": "::them san pham vao gio",
+                    "id": "e7b14858534d23c75b1372dc7bc9d5ff",
+                    "passes": 1,
+                    "fails": 0
+                },
+                "gio hang co san pham": {
+                    "name": "gio hang co san pham",
+                    "path": "::gio hang co san pham",
+                    "id": "1fa26285c6c3dcd36a6a36cca7f8f807",
+                    "passes": 1,
+                    "fails": 0
+                },
+                "mo duoc trang dia chi giao hang": {
+                    "name": "mo duoc trang dia chi giao hang",
+                    "path": "::mo duoc trang dia chi giao hang",
+                    "id": "e9084b8dd00779c2e1c6e367b2a40b25",
+                    "passes": 1,
+                    "fails": 0
+                },
+                "gui dia chi va mo duoc trang giao hang": {
+                    "name": "gui dia chi va mo duoc trang giao hang",
+                    "path": "::gui dia chi va mo duoc trang giao hang",
+                    "id": "9ca1fef08014b6d2917d660f99833f85",
+                    "passes": 1,
+                    "fails": 0
+                },
+                "tim thay token giao hang": {
+                    "name": "tim thay token giao hang",
+                    "path": "::tim thay token giao hang",
+                    "id": "bee07cdee46d8fff628dc40c3075c616",
+                    "passes": 1,
+                    "fails": 0
+                },
+                "chon duoc giao hang va mo trang thanh toan": {
+                    "fails": 0,
+                    "name": "chon duoc giao hang va mo trang thanh toan",
+                    "path": "::chon duoc giao hang va mo trang thanh toan",
+                    "id": "af821f24552fa4aa05950289f70b691f",
+                    "passes": 1
+                },
+                "tao duoc don demo local": {
+                    "name": "tao duoc don demo local",
+                    "path": "::tao duoc don demo local",
+                    "id": "2487fe302a15a43e4ca0ad894d46bb2e",
+                    "passes": 1,
+                    "fails": 0
+                }
+            }
+    }
+}
