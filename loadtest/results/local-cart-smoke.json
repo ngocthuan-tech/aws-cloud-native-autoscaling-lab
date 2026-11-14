@@ -1,0 +1,181 @@
+{
+    "metrics": {
+        "http_req_duration": {
+            "med": 29.97815,
+            "max": 46.0647,
+            "p(90)": 43.28595,
+            "p(95)": 44.675325,
+            "p(99)": 45.786825,
+            "avg": 28.924116666666666,
+            "min": 2.2328
+        },
+        "vus": {
+            "value": 1,
+            "min": 1,
+            "max": 1
+        },
+        "vus_max": {
+            "value": 1,
+            "min": 1,
+            "max": 1
+        },
+        "http_req_duration{expected_response:true}": {
+            "med": 29.97815,
+            "max": 46.0647,
+            "p(90)": 43.28595,
+            "p(95)": 44.675325,
+            "p(99)": 45.786825,
+            "avg": 28.924116666666666,
+            "min": 2.2328
+        },
+        "http_req_tls_handshaking": {
+            "min": 0,
+            "med": 0,
+            "max": 0,
+            "p(90)": 0,
+            "p(95)": 0,
+            "p(99)": 0,
+            "avg": 0
+        },
+        "http_req_waiting": {
+            "avg": 28.924116666666666,
+            "min": 2.2328,
+            "med": 29.97815,
+            "max": 46.0647,
+            "p(90)": 43.28595,
+            "p(95)": 44.675325,
+            "p(99)": 45.786825
+        },
+        "checks": {
+            "passes": 7,
+            "fails": 0,
+            "value": 1
+        },
+        "data_sent": {
+            "rate": 403.917479248226,
+            "count": 885
+        },
+        "iteration_duration": {
+            "p(99)": 2191.0416,
+            "avg": 2191.0416,
+            "min": 2191.0416,
+            "med": 2191.0416,
+            "max": 2191.0416,
+            "p(90)": 2191.0416,
+            "p(95)": 2191.0416
+        },
+        "http_req_blocked": {
+            "p(90)": 7.09255,
+            "p(95)": 10.638825,
+            "p(99)": 13.475845000000003,
+            "avg": 2.3641833333333335,
+            "min": 0,
+            "med": 0,
+            "max": 14.1851
+        },
+        "data_received": {
+            "count": 61799,
+            "rate": 28205.30655374138
+        },
+        "http_req_receiving": {
+            "max": 0,
+            "p(90)": 0,
+            "p(95)": 0,
+            "p(99)": 0,
+            "avg": 0,
+            "min": 0,
+            "med": 0
+        },
+        "http_req_connecting": {
+            "avg": 0.14558333333333334,
+            "min": 0,
+            "med": 0,
+            "max": 0.8735,
+            "p(90)": 0.43675,
+            "p(95)": 0.6551250000000001,
+            "p(99)": 0.8298250000000003
+        },
+        "http_req_sending": {
+            "p(90)": 0,
+            "p(95)": 0,
+            "p(99)": 0,
+            "avg": 0,
+            "min": 0,
+            "med": 0,
+            "max": 0
+        },
+        "http_req_failed": {
+            "passes": 0,
+            "fails": 6,
+            "thresholds": {
+                "rate<0.01": false
+            },
+            "value": 0
+        },
+        "iterations": {
+            "count": 1,
+            "rate": 0.4564039313539277
+        },
+        "http_reqs": {
+            "count": 6,
+            "rate": 2.7384235881235663
+        }
+    },
+    "root_group": {
+        "name": "",
+        "path": "",
+        "id": "d41d8cd98f00b204e9800998ecf8427e",
+        "groups": {},
+        "checks": {
+                "trang chu tra HTTP 200": {
+                    "path": "::trang chu tra HTTP 200",
+                    "id": "b5633a3e24eab0bad8b812478bca0c69",
+                    "passes": 1,
+                    "fails": 0,
+                    "name": "trang chu tra HTTP 200"
+                },
+                "danh muc tra HTTP 200": {
+                    "name": "danh muc tra HTTP 200",
+                    "path": "::danh muc tra HTTP 200",
+                    "id": "b10ed7fd0cc736c17578198391bea059",
+                    "passes": 1,
+                    "fails": 0
+                },
+                "danh muc co san pham": {
+                    "passes": 1,
+                    "fails": 0,
+                    "name": "danh muc co san pham",
+                    "path": "::danh muc co san pham",
+                    "id": "a8c651a641ce3af58253f4921f0801ca"
+                },
+                "tim thay link san pham": {
+                    "fails": 0,
+                    "name": "tim thay link san pham",
+                    "path": "::tim thay link san pham",
+                    "id": "2f4feffed77207844fc926a5ca99db18",
+                    "passes": 1
+                },
+                "chi tiet san pham tra HTTP 200": {
+                    "path": "::chi tiet san pham tra HTTP 200",
+                    "id": "d77146cb721bdab29a6268e91da34557",
+                    "passes": 1,
+                    "fails": 0,
+                    "name": "chi tiet san pham tra HTTP 200"
+                },
+                "them vao gio mo duoc trang gio hang": {
+                    "path": "::them vao gio mo duoc trang gio hang",
+                    "id": "10832fe9fe432a5696c7958bb0b581c6",
+                    "passes": 1,
+                    "fails": 0,
+                    "name": "them vao gio mo duoc trang gio hang"
+                },
+                "gio hang co san pham": {
+                    "name": "gio hang co san pham",
+                    "path": "::gio hang co san pham",
+                    "id": "1fa26285c6c3dcd36a6a36cca7f8f807",
+                    "passes": 1,
+                    "fails": 0
+                }
+            }
+    }
+}
