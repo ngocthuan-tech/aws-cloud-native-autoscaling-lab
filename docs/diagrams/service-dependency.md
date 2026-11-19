@@ -44,7 +44,7 @@ flowchart TD
 | Checkout | Redis | Lưu trạng thái checkout |
 | Checkout | Orders | Gửi yêu cầu tạo đơn |
 | Orders | PostgreSQL | Lưu dữ liệu đơn hàng |
-| Orders | RabbitMQ | Trao đổi thông điệp |
+| Orders | RabbitMQ | Phát sự kiện đơn hàng |
 
 ### 3.1. Phân biệt kết nối runtime và thứ tự khởi động
 
@@ -67,7 +67,7 @@ OpenSearch vẫn có trong Compose và trong `depends_on` của Catalog, mặc d
 - Ngày khảo sát: 13/11/2026.
 - Source commit: `d7a380b843e0759e58754f74188ea18252a51415`.
 - File Compose local đã được đối chiếu với asset của release `v1.6.3`.
-- Cấu hình và DNS local đã được kiểm tra; tên `carts` có trong DNS metadata của container Cart và đã được
+- Cấu hình và DNS local đã được kiểm tra; tên `carts` có trong DNS metadata của container Cart 
 
 ## 4. Lưu ý khi triển khai trên ECS Fargate
 
@@ -76,7 +76,7 @@ OpenSearch vẫn có trong Compose và trong `depends_on` của Catalog, mặc d
 - Năm microservice đều sử dụng cổng container `8080`.
 - Health check của UI, Cart và Orders là `/actuator/health`; Catalog và Checkout là `/health`.
 - Khi scale nhiều task, dữ liệu cần thiết phải được lưu trữ hoặc chia sẻ phù hợp để tránh mất trạng thái.
-- Hiện chưa có bằng chứng xác nhận đầy đủ kết nối AWS và khả năng hoạt động với nhiều replica.
+- Đã thử một số tình huống restart và nhiều replica trong lab local; chưa xác minh đầy đủ trên ECS Fargate. Kết quả local không chứng minh khả năng autoscaling trên AWS.
 
 ## 5. Phân công sử dụng tài liệu
 
