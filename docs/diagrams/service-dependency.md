@@ -46,6 +46,29 @@ flowchart TD
 | Orders | PostgreSQL | Lưu dữ liệu đơn hàng |
 | Orders | RabbitMQ | Trao đổi thông điệp |
 
+### 3.1. Phân biệt kết nối runtime và thứ tự khởi động
+
+Các mũi tên trong sơ đồ thể hiện kết nối ứng dụng được cấu hình, không đại diện trực tiếp cho `depends_on` của Docker Compose.
+
+| Service | `depends_on` trong Compose đã khảo sát |
+|---|---|
+| UI | Cart, Catalog, Checkout, Orders |
+| Catalog | catalog-db, opensearch |
+| Cart | carts-db |
+| Checkout | checkout-redis |
+| Orders | orders-db |
+
+Checkout gọi Orders và Orders kết nối RabbitMQ khi xử lý nghiệp vụ, dù những kết nối này không được khai báo trong `depends_on` tương ứng.
+
+OpenSearch vẫn có trong Compose và trong `depends_on` của Catalog, mặc dù tính năng tìm kiếm đang tắt.
+
+### 3.2. Phạm vi bằng chứng
+
+- Ngày khảo sát: 13/11/2026.
+- Source commit: `d7a380b843e0759e58754f74188ea18252a51415`.
+- File Compose local đã được đối chiếu với asset của release `v1.6.3`.
+- Cấu hình và DNS local đã được kiểm tra; tên `carts` có trong DNS metadata của container Cart và đã được
+
 ## 4. Lưu ý khi triển khai trên ECS Fargate
 
 - Các hostname như `carts`, `catalog-db`, `orders-db` là địa chỉ trong Docker Compose local, không tự động sử dụng được trên ECS.
