@@ -79,3 +79,11 @@
 - Thử lỗi tĩnh có chủ đích trong module con ở thư mục tạm: phát hiện biến không dùng và instance type sai (exit 2); sửa rồi đạt (exit 0). Không tạo tài nguyên AWS.
 - Terraform fmt/validate và 4 mock tests đạt; actionlint đạt. Hướng dẫn và giới hạn nằm ở `docs/terraform-checks.md`.
 - Chưa làm Terraform plan/comment, chưa apply hoặc xác minh OIDC/ECS thật. Mọi thay đổi vẫn qua PR cho A duyệt.
+
+## Ngày 21/11/2026 — kiểm tra bảo mật và số liệu build
+
+- [Bảng thời gian build cho D](evidence/build-baseline.md) ghi thời gian từng job và thời gian thực của cả matrix.
+- Gitleaks 8.30.1 quét lịch sử đến HEAD trước build. Lần thử local trên 24 commit trả về 0 phát hiện; mẫu token giả ngẫu nhiên trong thư mục tạm trả về 1 phát hiện. Log bật redaction.
+- Khi matrix chọn UI, build nạp image linux/amd64 vào Docker trên runner. Trivy 0.76.2 quét đúng tag commit bằng Docker và trả exit 2 khi phát hiện CRITICAL. Nếu build thất bại, job publish phụ thuộc vào build sẽ dừng. A có thể yêu cầu check Delivery checks trong ruleset để chặn merge.
+- Docker Desktop local chưa khởi động được. Phép thử độc lập dùng image public UI 1.6.3, digest sha256:e5936e5286f55bb6eb6c8bc1746a67b5c8890bf1cd3699795598856a9f0590a0. Trivy trả exit 2 cho hai phát hiện trên spring-webflux 6.2.19 (CVE-2026-47890 và CVE-2026-47892). B cần đối chiếu kết quả trên image do CI của nhóm build trước khi chọn dependency tương thích và chạy lại kiểm thử chức năng.
+- Với một plan do A tạo, chạy `terraform show -json <planfile> | node scripts/terraform/plan-summary.mjs` từ gốc repo. Kiểm tra plan đã thành công trước đó. Script tạo bảng Markdown đếm hành động resource, gộp thay thế và bỏ qua no-op. Chỉ dán bảng vào PR. Các giá trị resource và output trong JSON gốc có thể chứa bí mật. Ba test dùng dữ liệu giả đã đạt. Xác thực đọc state và tự đăng comment còn chờ A.
